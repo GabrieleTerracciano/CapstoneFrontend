@@ -1,0 +1,44 @@
+<div *ngIf="videogame; else loading">
+  <div class="card mt-4">
+    <div class="card-header">
+      <h2>{{ videogame.name }}</h2>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4">
+          <img [src]="videogame.backgroundImage" alt="{{ videogame.name }}" class="img-fluid" />
+        </div>
+        <div class="col-md-8">
+          <h4>Descrizione</h4>
+          <p>{{ videogame.description }}</p>
+          <h4>Data di Uscita</h4>
+          <p>{{ videogame.released | date }}</p>
+          <h4>Prezzo</h4>
+          <p>{{ price | currency:'EUR':'symbol':'1.2-2' }}</p>
+
+          <form (submit)="addToCart(videogame, quantity)" class="input-group mb-3">
+            <input
+              type="number"
+              [(ngModel)]="quantity"
+              name="quantity"
+              class="form-control"
+              placeholder="Qty"
+              min="1"
+              required
+            />
+            <button type="submit" class="btn btn-success">Aggiungi al Carrello</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="text-center mt-5">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Caricamento...</span>
+    </div>
+    <p>Caricamento dettagli del gioco...</p>
+  </div>
+</ng-template>

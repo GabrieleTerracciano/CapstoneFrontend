@@ -1,0 +1,15 @@
+<div *ngIf="user; else loading">
+    <h2>Profilo di {{ user.name }}</h2>
+    <p>Email: {{ user.email }}</p>
+    <p>Nome: {{ user.name }}</p>
+    <p>Cognome: {{ user.surname }}</p>
+  </div>
+  
+  <ng-template #loading>
+    <p>Caricamento...</p>
+  </ng-template>
+  
+  <div *ngIf="errorMessage" class="error">
+    <p>{{ errorMessage }}</p>
+  </div>
+  

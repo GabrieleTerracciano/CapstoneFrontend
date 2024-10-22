@@ -1,0 +1,31 @@
+<div class="container pt-5">
+  <h1 class="my-4 text-center">Playstation Games</h1>
+  <div class="row" *ngIf="games.length > 0; else noGames">
+    <div class="col-lg-3 col-md-6 col-sm-12 mb-4" *ngFor="let game of games">
+      <div class="card h-100">
+        <img class="card-img-top" [src]="game.background_image" alt="{{ game.name }}" />
+        <div class="card-body">
+          <h5 class="card-title">{{ game.name }}</h5>
+          <p class="card-text">{{ game.released | date }}</p>
+          <p class="card-text">Rating: {{ game.rating }}</p>
+          <p class="card-text">Price: €{{ game.price.toFixed(2) }}</p>
+        </div>
+        <div class="card-footer d-flex align-items-center">
+          <input
+            type="number"
+            min="1"
+            [(ngModel)]="quantity[game.id]"
+            class="form-control me-2"
+            style="width: 70px;"
+            placeholder="1"
+          />
+          <button class="btn btn-success btn-sm" (click)="addToCart(game, quantity[game.id] || 1)">Aggiungi al Carrello</button>
+          <a [routerLink]="['/details', game.id]" class="btn btn-primary btn-sm ms-2">Info Gioco</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #noGames>
+    <p class="text-center">No games available for Playstation.</p>
+  </ng-template>
+</div>

@@ -1,0 +1,31 @@
+<div class="container pt-5">
+  <h1 class="my-4 text-center">Carrello</h1>
+  <div *ngIf="cartItems.length > 0; else noItems">
+    <div class="row">
+      <div class="col-12 mb-4" *ngFor="let item of cartItems">
+        <div class="card h-100">
+          <img class="card-img-top" [src]="item.product.backgroundImage" alt="{{ item.product.name }}" />
+          <div class="card-body">
+            <h5 class="card-title">{{ item.product.name }}</h5>
+            <p class="card-text">Prezzo: €{{ item.product.price.toFixed(2) }}</p>
+            <div class="input-group">
+              <input
+                type="number"
+                [(ngModel)]="item.quantity"
+                (ngModelChange)="updateQuantity(item.product.id, $event)"
+                min="1"
+                class="form-control"
+              />
+              <button class="btn btn-danger" (click)="removeFromCart(item.product.id)">Rimuovi</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h4 class="text-right">Totale: {{ total | currency:'EUR':'symbol':'1.2-2' }}</h4>
+    <button class="btn btn-success mt-4" (click)="checkout()">Checkout</button>
+  </div>
+  <ng-template #noItems>
+    <p class="text-center">Il carrello è vuoto.</p>
+  </ng-template>
+</div>

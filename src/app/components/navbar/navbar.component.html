@@ -1,0 +1,65 @@
+<div class="container mb-5">
+  <nav class="navbar navbar-expand-lg bg-secondary fixed-top bg-gradient">
+    <div class="container-fluid">
+      <a class="nav-link text-white ps-lg-5" [routerLink]="['/']" routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">
+        <img src="../../../assets/img/logo_gafaGaming_white.png" alt="logo" class="img-fluid logo-navbar" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav rounded-pill bg-gradient">
+          <li class="nav-item">
+            <a class="nav-link text-white" [routerLink]="['/categorie']"
+              routerLinkActive="active"><strong>Categorie</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" [routerLink]="['/playstation']"
+              routerLinkActive="active"><strong>PlayStation</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" [routerLink]="['/xbox']" routerLinkActive="active"><strong>Xbox</strong></a>
+          </li>
+        </ul>
+
+        <form class="d-flex ms-3" (submit)="onSearch(); $event.preventDefault();">
+          <input class="form-control me-2 rounded-5" type="search" [(ngModel)]="searchTerm" name="searchTerm"
+            placeholder="Cerca" aria-label="Search" />
+          <button class="btn btn-outline-light rounded-5" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+
+        <div *ngIf="showResults" class="search-results position-absolute bg-white rounded shadow mt-2" style="z-index: 1000;">
+          <ul class="list-group">
+            <li *ngFor="let videogame of searchResults" class="list-group-item list-group-item-action" (click)="selectVideogame(videogame)">
+              {{ videogame.name }}
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="navbar-icons d-flex me-lg-5">
+        <a class="nav-link" [routerLink]="['/cart']" aria-label="Vai al carrello">
+          <i class="fas fa-shopping-cart me-2"></i>
+        </a>
+        <a class="nav-link text-light fw-bolder" [routerLink]="['/login']" routerLinkActive="color2"
+          [routerLinkActiveOptions]="{ exact: true }" aria-current="page">
+          <i class="bi bi-person-circle"></i>
+        </a>
+        <a class="nav-link text-light fw-bolder" [routerLink]="['/register']" routerLinkActive="color2"
+          [routerLinkActiveOptions]="{ exact: true }" aria-current="page">
+          <i class="bi bi-person"></i>
+        </a>
+        <a class="nav-link text-light fw-bolder" [routerLink]="['/profile']" routerLinkActive="color2"
+          [routerLinkActiveOptions]="{ exact: true }" aria-current="page">
+          <i class="bi bi-person-square"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+</div>
