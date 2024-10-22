@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/service/cart.service';
 import { loadStripe } from '@stripe/stripe-js';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-cart',
@@ -49,7 +50,7 @@ export class CartComponent implements OnInit {
     this.cartService.createCheckoutSession().subscribe(
       async (session) => {
         // Carica Stripe.js
-        const stripe = await loadStripe('pk_test_51QCKq1Kox4xzQwbE7OGE3bdIGwR9yyAatdZDZJQGZto9JU9iAGzzwJbAub9bNQK7ss2VNWycY3o9JfCThjAyx6ie00v6I3hrrc');
+        const stripe = await loadStripe(environment.stripeKey);
 
         if (!stripe) {
           console.error('Errore durante il caricamento di Stripe.');

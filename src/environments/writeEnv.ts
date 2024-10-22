@@ -2,7 +2,7 @@
 
 const setEnv = () => {
     // Configure Angular `environment.ts` file path
-    const targetPath = './environment.ts';
+    const targetPath = './src/enviroments/environment.ts';
     // Load node modules
     require('dotenv').config({
       path: '.env',
@@ -13,7 +13,7 @@ const setEnv = () => {
   };
   `;
   
-  const targetPathProd = './environment.prod.ts';
+  const targetPathProd = './src/enviroments/environment.prod.ts';
   // Load node modules
   require('dotenv').config({
     path: '.env',
