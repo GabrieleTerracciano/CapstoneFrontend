@@ -49,7 +49,6 @@ export class CartComponent implements OnInit {
 
     this.cartService.createCheckoutSession().subscribe(
       async (session) => {
-        // Carica Stripe.js
         const stripe = await loadStripe(environment.stripeKey);
 
         if (!stripe) {
