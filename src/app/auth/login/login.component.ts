@@ -13,11 +13,15 @@ export class LoginComponent {
 
     login(form: NgForm) {
         console.log(form.value);
-        try {
-            this.authSrv.login(form.value).subscribe();
-            this.router.navigate(['/']);
-        } catch (error) {
-            console.error(error);
-        }
+        this.authSrv.login(form.value).subscribe(
+            () => {
+                alert('Login avvenuto con successo!');
+                this.router.navigate(['/categorie']);
+            },
+            (error) => {
+                console.error('Errore di autenticazione:', error);
+                alert('Credenziali errate. Riprova.');
+            }
+        );
     }
 }

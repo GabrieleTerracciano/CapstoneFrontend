@@ -19,6 +19,8 @@ import { CartComponent } from './components/cart/cart.component';
 import { CartService } from './service/cart.service';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CategorieComponent } from './components/categorie/categorie.component';
+import { CategoriaDettaglioComponent } from './components/categoria-dettaglio/categoria-dettaglio.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Route[] = [
   {
@@ -40,6 +42,10 @@ const routes: Route[] = [
   {
     path: 'categorie',
     component: CategorieComponent,
+  },
+  {
+    path: 'categorie/:id',
+    component: CategoriaDettaglioComponent,
   },
   {
     path: 'playstation',
@@ -77,7 +83,8 @@ const routes: Route[] = [
     RegisterComponent,
     DetailsComponent,
     CartComponent,
-    ProfileComponent
+    ProfileComponent,
+    CategoriaDettaglioComponent
   ],
   imports: [
     BrowserModule,
@@ -85,6 +92,7 @@ const routes: Route[] = [
     RouterModule.forRoot(routes),
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {

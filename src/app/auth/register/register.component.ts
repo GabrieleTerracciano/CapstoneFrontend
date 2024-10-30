@@ -9,16 +9,19 @@ import { Router } from '@angular/router';
     styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent {
-
     constructor(private authSrv: AuthService, private router: Router) {}
 
     onSubmit(form: NgForm) {
         console.log(form.value);
-        try {
-            this.authSrv.signup(form.value).subscribe();
-            this.router.navigate(['/login']);
-        } catch (error) {
-            console.error(error);
-        }
+        this.authSrv.signup(form.value).subscribe(
+            () => {
+                alert('Registrazione avvenuta con successo! Ora puoi effettuare il login.');
+                this.router.navigate(['/login']);
+            },
+            (error) => {
+                console.error('Errore durante la registrazione:', error);
+                alert('Errore durante la registrazione. Riprova.');
+            }
+        );
     }
 }

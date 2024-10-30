@@ -27,7 +27,10 @@ export class DetailsComponent implements OnInit {
     if (idParam) {
       const id = +idParam;
       this.videogameService.getVideogameById(id).subscribe(data => {
-        this.videogame = data; 
+        this.videogame = {
+          ...data,
+          backgroundImage: data.background_image
+        };
         this.price = this.generateRandomPrice();
       }, error => {
         console.error('Errore nel recupero del videogioco:', error);
@@ -36,6 +39,7 @@ export class DetailsComponent implements OnInit {
       console.error('ID non presente nella route');
     }
   }
+  
 
   generateRandomPrice(): number {
     return Math.floor(Math.random() * 60) + 10;
@@ -46,5 +50,8 @@ export class DetailsComponent implements OnInit {
       this.cartService.addProductToCart({ ...game, price: this.price }, quantity);
       alert(`${quantity} unità di "${game.name}" aggiunte al carrello!`);
     }
+  }
+  cleanDescription(description: string): string {
+    return description.replace(/<[^>]+>/g, '');
   }
 }

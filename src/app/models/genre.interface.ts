@@ -4,7 +4,7 @@ export interface Genre {
     slug: string;
     games_count: number;
     image_background: string;
-    games?: Array<{
+    games: Array<{
       id: number;
       slug: string;
       name: string;

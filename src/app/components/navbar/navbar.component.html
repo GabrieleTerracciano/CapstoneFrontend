@@ -25,7 +25,7 @@
           </li>
         </ul>
 
-        <form class="d-flex ms-3" (submit)="onSearch(); $event.preventDefault();">
+        <form class="d-flex ms-3">
           <input class="form-control me-2 rounded-5" type="search" [(ngModel)]="searchTerm" name="searchTerm"
             placeholder="Cerca" aria-label="Search" />
           <button class="btn btn-outline-light rounded-5" type="submit">
@@ -49,11 +49,11 @@
         </a>
         <a class="nav-link text-light fw-bolder" [routerLink]="['/login']" routerLinkActive="color2"
           [routerLinkActiveOptions]="{ exact: true }" aria-current="page">
-          <i class="bi bi-person-circle"></i>
+          Login
         </a>
         <a class="nav-link text-light fw-bolder" [routerLink]="['/register']" routerLinkActive="color2"
           [routerLinkActiveOptions]="{ exact: true }" aria-current="page">
-          <i class="bi bi-person"></i>
+          Registrazione
         </a>
         <a class="nav-link text-light fw-bolder" [routerLink]="['/profile']" routerLinkActive="color2"
           [routerLinkActiveOptions]="{ exact: true }" aria-current="page">

@@ -21,4 +21,10 @@ export class GenreService {
     const url = `${this.apiUrl}/${id}?key=${this.apiKey}`;
     return this.http.get<Genre>(url);
   }
+
+  getGamesByGenre(id: number, limit: number = 100): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}/games`, {
+      params: { limit: limit.toString() }
+    });
+  }
 }

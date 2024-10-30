@@ -1,0 +1,22 @@
+<div class="container mt-5" *ngIf="categoria; else loading">
+  <h2>{{ categoria.name }}</h2>
+  <img [src]="categoria.image_background" alt="{{ categoria.name }}" class="img-fluid mb-4">
+  <p>Numero di giochi: {{ categoria.games_count }}</p>
+  <h3 class="mt-4">Giochi in questa categoria</h3>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+    <div class="col" *ngFor="let game of giochi">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ game.name }}</h5>
+          <a [routerLink]="['/games', game.slug]" class="btn btn-primary mt-2">Dettagli</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="text-center">
+    <p>Caricamento in corso...</p>
+  </div>
+</ng-template>

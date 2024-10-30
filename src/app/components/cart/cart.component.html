@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-12 mb-4" *ngFor="let item of cartItems">
         <div class="card h-100">
-          <img class="card-img-top" [src]="item.product.backgroundImage" alt="{{ item.product.name }}" />
+          <img class="card-img-top w-25" [src]="item.product.backgroundImage" alt="{{ item.product.name }}" />
           <div class="card-body">
             <h5 class="card-title">{{ item.product.name }}</h5>
             <p class="card-text">Prezzo: €{{ item.product.price.toFixed(2) }}</p>

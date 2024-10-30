@@ -1,31 +1,21 @@
 <div class="container pt-5">
-    <h1 class="my-4 text-center">Categorie di Videogiochi</h1>
-  
-    <div class="row" *ngIf="categorie.length > 0; else noCategories">
-      <div class="col-lg-3 col-md-6 col-sm-12 mb-4" *ngFor="let category of categorie">
-        <div class="card h-100" (click)="onCategorySelect(category)">
+  <h1 class="my-4 text-center">Categorie di Videogiochi</h1>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4" *ngIf="categorie.length > 0; else noCategories">
+    <div class="col" *ngFor="let category of categorie">
+      <a [routerLink]="['/categorie', category.id]" class="text-decoration-none text-reset">
+        <div class="card h-100">
           <img class="card-img-top" [src]="category.image_background" alt="{{ category.name }}" />
           <div class="card-body">
             <h5 class="card-title">{{ category.name }}</h5>
             <p class="card-text">Giochi: {{ category.games_count }}</p>
           </div>
         </div>
-  
-        <div *ngIf="category.games && category.games.length > 0">
-          <h6 class="mt-3">Giochi in questa categoria:</h6>
-          <ul class="list-group">
-            <li class="list-group-item" *ngFor="let game of category.games">
-              <a [routerLink]="['/games', game.slug]">{{ game.name }}</a>
-            </li>
-          </ul>
-        </div>
-      </div>
+      </a>
     </div>
-  
-    <ng-template #noCategories>
-      <div class="alert alert-warning text-center" role="alert">
-        Nessuna categoria disponibile.
-      </div>
-    </ng-template>
   </div>
-  
+  <ng-template #noCategories>
+    <div class="alert alert-warning text-center" role="alert">
+      Nessuna categoria disponibile.
+    </div>
+  </ng-template>
+</div>

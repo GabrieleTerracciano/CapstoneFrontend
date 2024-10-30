@@ -10,7 +10,7 @@
         </div>
         <div class="col-md-8">
           <h4>Descrizione</h4>
-          <p>{{ videogame.description }}</p>
+          <p>{{ cleanDescription(videogame.description) }}</p>
           <h4>Data di Uscita</h4>
           <p>{{ videogame.released | date }}</p>
           <h4>Prezzo</h4>

@@ -17,20 +17,6 @@ export class NavbarComponent {
     private videogameService: VideogameService
   ) {}
 
-  onSearch(): void {
-    if (this.searchTerm.trim()) {
-      this.videogameService.getVideogamesByName(this.searchTerm).subscribe(videogames => {
-        this.searchResults = videogames;
-        this.showResults = this.searchResults.length > 0;
-      }, error => {
-        console.error('Errore nella ricerca del videogioco:', error);
-        alert('Si è verificato un errore durante la ricerca.');
-      });
-    } else {
-      this.clearResults();
-    }
-  }
-
   selectVideogame(videogame: any): void {
     this.router.navigate(['/details', videogame.id]);
     this.clearResults();
